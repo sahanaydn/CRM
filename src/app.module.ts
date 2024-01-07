@@ -9,12 +9,14 @@ import { UsersModule } from './users/users.module';
 import { ProductsModule } from './products/products.module';
 
 import { MongooseModule } from '@nestjs/mongoose';
+import { FirmModule } from './firm/firm.module';
 
 @Module({
   imports: [
     ProductsModule,
     UsersModule,
     MongooseModule.forRoot('mongodb://localhost:27017'),
+    FirmModule,
   ],
   controllers: [AppController],
   providers: [

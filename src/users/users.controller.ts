@@ -6,6 +6,8 @@ import {
   Param,
   Post,
   Put,
+  UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 
 import { UsersService } from './users.service';
@@ -26,6 +28,7 @@ export class UsersController {
   }
 
   @Post()
+  @UsePipes(new ValidationPipe({ transform: true }))
   create(@Body() allProps: UserDocument) {
     return this.usersService.create(allProps);
   }
@@ -34,7 +37,5 @@ export class UsersController {
   // update(@Param('id') id, @Body() allProps: UserDocument) {}
 
   @Delete(':id')
-  delete(@Param('id') id: string): void {
-    console.log('naber');
-  }
+  delete(@Param('id') id: string): void {}
 }
